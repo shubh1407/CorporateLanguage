@@ -20,6 +20,8 @@ examples = [
     ("🔥 Complex Program", "day start\n\nreportKaro \"🌞 Good morning team\"\nassignTask tas = 3 \nmanager ka mood kya he \"angry\"\nmanager ka mood\n  jab \"angry\"\n    reportKaro \"👿 Manager gussa me hai\"\n  jab \"busy\"\n    reportKaro \"📞 Manager busy bol raha\"\n  jab \"happy\"\n    reportKaro \"😎 Manager bol raha chhutti le lo\"\n  choro\n    reportKaro \"😅 Manager ka koi bharosa nahi\"\nmood ka the end\n\nassignTask tasks = 5\nagar (tasks > 3)\n  reportKaro \"📊 Kaam zyada ho gaya\"\nnahi\n  reportKaro \"👌 Chill maro\"\nkaam band\n\nchalo meeting kre 3\nreportKaro \"👥 Standup ho raha\"\nfinally over huyi\n\nclient call lagao\nreportKaro \"🚀 Code deploy kar rahe the\"\nissue aa gaya\nreportKaro \"😶 Ye line nahi chalni chahiye\"\nclient gussa hua\nagar (tasks > 10)\n  reportKaro \"🔥 Client gussa ho gaya\"\nchinta mat kar\nreportKaro \"😌 Chinta mat kar, fix ho jayega\"\nchinta over\ntea break 10\n\nday end")
 ]
 
+code = st.text_area("Yahan apna code likho...", value=st.session_state.get("code", ""), height=300, key="code_input")
+
 st.subheader("🎨 Demo Examples:")
 cols = st.columns(2)
 for idx, (title, code) in enumerate(examples):
@@ -29,7 +31,6 @@ for idx, (title, code) in enumerate(examples):
         if st.button(f"📋 Copy Example {idx+1}", key=f"copy{idx}"):
             st.session_state["code"] = code
 
-code = st.text_area("Yahan apna code likho...", value=st.session_state.get("code", ""), height=300, key="code_input")
 
 if st.button("⚡ Run"):
     if code.strip():
