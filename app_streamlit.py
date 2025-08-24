@@ -22,16 +22,6 @@ examples = [
 
 code = st.text_area("Yahan apna code likho...", value=st.session_state.get("code", ""), height=300, key="code_input")
 
-st.subheader("🎨 Demo Examples:")
-cols = st.columns(2)
-for idx, (title, code) in enumerate(examples):
-    with cols[idx % 2]:
-        st.markdown(f"**{title}**")
-        st.code(code, language="text")
-        if st.button(f"📋 Copy Example {idx+1}", key=f"copy{idx}"):
-            st.session_state["code"] = code
-
-
 if st.button("⚡ Run"):
     if code.strip():
         try:
@@ -48,3 +38,14 @@ if st.button("⚡ Run"):
 else:
     st.subheader("📤 Output:")
     st.code("Code ka result yahan aayega...", language="text")
+
+
+st.subheader("🎨 Demo Examples:")
+cols = st.columns(2)
+for idx, (title, code) in enumerate(examples):
+    with cols[idx % 2]:
+        st.markdown(f"**{title}**")
+        st.code(code, language="text")
+        if st.button(f"📋 Copy Example {idx+1}", key=f"copy{idx}"):
+            st.session_state["code"] = code
+
